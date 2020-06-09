@@ -1,0 +1,32 @@
+
+// Sample code to perform I/O:
+#include <stdio.h>
+int a[10], n;
+int f(n){
+	if (n!=0){
+		int i=n%10;     //divide the number by 10 to get the remainder which will be the last digit
+		a[i]++;         //increase the count for the above digit
+		n=(n-i)/10;     //extract the quotient from the original number
+		f(n);           // delete the quotient with 10 again.
+	}
+	else return 0;
+}
+int main(void){
+    int num;
+	printf("Enter number->");
+	scanf("%d", &num);              			// Reading input from STDIN
+	printf("Input number is %d.\n", num);       // Writing output to STDOUT
+	if(num==0){   //if the input number is 0, then simply add 1 to the count of zero and print
+	    a[0]++;
+	}
+	else f(num);
+	for(int c=0; c<10; c++)
+	{
+		printf("%d  %d\n", c, a[c]);
+	}
+return 0;
+}
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+
+
+// Write your code here
